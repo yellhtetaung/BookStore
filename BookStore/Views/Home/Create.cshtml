@@ -1,0 +1,49 @@
+﻿@model Book
+
+<section>
+    <a class="back-button btn btn-primary rounded-circle d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Index">
+        <i class="bi bi-arrow-left"></i>
+    </a>
+
+    <form class="card mt-5 col-12 col-md-10 col-lg-8 mx-auto" asp-controller="Home" asp-action="Create">
+        <div class="card-header">
+            <h5 class="card-title">Create new book</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control @(ViewData.ModelState["Name"]?.Errors.Any() == true ? "is-invalid" : "")" asp-for="Name" placeholder="Enter book name" />
+                <span asp-validation-for="Name" class="invalid-feedback"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Author" class="form-label">Author</label>
+                <input type="text" class="form-control @(ViewData.ModelState["Author"]?.Errors.Any() == true ? "is-invalid" : "")" asp-for="Author" placeholder="Enter author name" />
+                <span asp-validation-for="Author" class="invalid-feedback"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">Price</label>
+                <input type="number" class="form-control @(ViewData.ModelState["Price"]?.Errors.Any() == true ? "is-invalid" : "")" asp-for="Price" step="0.01" placeholder="Enter amount" />
+               <span asp-validation-for="Price" class="invalid-feedback"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PublishedDate" class="form-label">Published Date</label>
+                <input type="date" class="form-control @(ViewData.ModelState["PublishDate"]?.Errors.Any() == true ? "is-invalid" : "")" asp-for="PublishedDate" placeholder="Enter published date" />
+                <span asp-validation-for="PublishedDate" class="invalid-feedback"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Summary" class="form-label">Summary</label>
+                <textarea class="form-control @(ViewData.ModelState["Summary"]?.Errors.Any() == true ? "is-invalid" : "")" asp-for="Summary" placeholder="Enter summary" rows="5"></textarea>
+                <span asp-validation-for="Summary" class="invalid-feedback"></span>
+            </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-end align-items-center gap-3">
+            <a class="btn btn-danger" asp-controller="Home" asp-action="Index">Cancel</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</section>
